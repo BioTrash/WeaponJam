@@ -23,10 +23,25 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Is a shoot function, triggered from PlayerCharacter.cpp under Shoot function (Rufus)
-	void PullTrigger();
+	// Is a shoot function, triggered from PlayerCharacter.cpp under Shoot function as well as CancelShoot under it (Rufus)
+	void PullTrigger(bool SprayShooting);
+
+	// The default way of shooting if no projectile is specified in blueprints (Rufus)
+	// Public access may be redundant (Rufus)
+	void ShootWithoutProjectile();
+
+	// The default way of shooting if a projectile is specified in blueprints (Rufus)
+	// Public access may be redundant (Rufus)
+	void ShootProjectile();
 	
 private:
+
+	UPROPERTY()
+	FVector Location;
+	UPROPERTY()
+	FRotator Rotation;
+	UPROPERTY()
+	FVector End;
 	
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;
@@ -41,6 +56,8 @@ private:
 	// If no projectile is set in BlueprintEditor the fallback is direct shots
 	UPROPERTY(EditAnywhere, Category="Weaponry")
 	TSubclassOf<class AProjectile> Projectile;
+
+	FTimerHandle SprayShootingTimer;
 
 
 };
