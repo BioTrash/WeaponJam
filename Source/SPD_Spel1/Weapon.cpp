@@ -57,7 +57,7 @@ void AWeapon::PullTrigger(bool SprayShooting)
 	{
 		if(SprayShooting)
 		{
-			GetWorld()->GetTimerManager().SetTimer(SprayShootingTimer, this, &AWeapon::ShootProjectile, 0.05f, true, 0.0f);
+			GetWorld()->GetTimerManager().SetTimer(SprayShootingTimer, this, &AWeapon::ShootProjectile, 0.1f, true, 0.0f);
 		}
 		else
 		{
@@ -69,7 +69,7 @@ void AWeapon::PullTrigger(bool SprayShooting)
 	{
 		if(SprayShooting)
 		{
-			GetWorld()->GetTimerManager().SetTimer(SprayShootingTimer, this, &AWeapon::ShootWithoutProjectile, 0.05f, true, 0.0f);			
+			GetWorld()->GetTimerManager().SetTimer(SprayShootingTimer, this, &AWeapon::ShootWithoutProjectile, 0.1f, true, 0.0f);			
 		}
 		else
 		{
@@ -103,6 +103,7 @@ void AWeapon::ShootProjectile()
 	// CHANGE WHEN WEAPON MESHES ARE MADE! (Rufus)
 	GetWorld()->SpawnActor<AProjectile>(Projectile, Location + GetOwner()->GetActorForwardVector()*100, Rotation);
 }
+
 
 
 

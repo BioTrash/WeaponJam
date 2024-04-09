@@ -19,23 +19,6 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Is a shoot function, triggered from PlayerCharacter.cpp under Shoot function as well as CancelShoot under it (Rufus)
-	void PullTrigger(bool SprayShooting);
-
-	// The default way of shooting if no projectile is specified in blueprints (Rufus)
-	// Public access may be redundant (Rufus)
-	void ShootWithoutProjectile();
-
-	// The default way of shooting if a projectile is specified in blueprints (Rufus)
-	// Public access may be redundant (Rufus)
-	void ShootProjectile();
-	
-private:
-
 	UPROPERTY()
 	FVector Location;
 	UPROPERTY()
@@ -49,6 +32,23 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* Mesh;
 
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	// Is a shoot function, triggered from PlayerCharacter.cpp under Shoot function as well as CancelShoot under it (Rufus)
+	void PullTrigger(bool SprayShooting);
+
+	// The default way of shooting if no projectile is specified in blueprints (Rufus)
+	// Public access may be redundant (Rufus)
+	void ShootWithoutProjectile();
+
+	// Shooting method called if a projectile is specified in blueprints (Rufus)
+	// Public access may be redundant (Rufus)
+	void ShootProjectile();
+	
+private:
+	
 	// Max range is applicable only when no projectile is found, in case of projectile max range should be regulated with physics (Rufus)
 	UPROPERTY(EditAnywhere, Category="Weaponry")
 	float MaxShootingRange = 1000;

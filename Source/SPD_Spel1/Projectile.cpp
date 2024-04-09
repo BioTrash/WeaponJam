@@ -41,7 +41,7 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 {
 	//Do all hit logic here
 	UE_LOG(LogTemp, Warning, TEXT("Hit Detected"));
-	Destroy();
+	//Destroy();
 }
 
 
